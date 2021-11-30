@@ -1,0 +1,12 @@
+{   
+    "account":[
+        {"username":"","password":""}
+    ],
+    "amount":500,
+    "ETF":[
+        {"id":"", "percentile":""},
+        {"id":"", "percentile":""},
+        {"id":"", "percentile":""}
+    ],
+    "webhook":""
+}
