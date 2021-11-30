@@ -46,6 +46,6 @@ Accumulation Plan (<b>PAC</b>) is an investment solution based on periodic payme
 <ul>
 <li>The script automatically save a log of every operation in files/log.log;</li>
 <li>Check buy orders in outcome/order_recap.csv;</li>
-<li>Check porftfolio status in outcome/portfolio_status.csv;<li>
+<li>Check porftfolio status in outcome/portfolio_status.csv;</li>
 <li>The script automaticcaly generate a pie chart of your portfolio.</li>
 </ul>
