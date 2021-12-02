@@ -19,13 +19,6 @@ sh.setFormatter(formatter)
 logger.addHandler(fh)
 logger.addHandler(sh)
 
-import sys, ipdb, traceback
-
-def info(type, value, tb):
-    traceback.print_exception(type, value, tb)
-    ipdb.pm()
-
-#sys.excepthook = info
 
 class DeGIRO_PAC():
     
