@@ -7,8 +7,18 @@ from datetime import date, datetime, timedelta
 from discord_webhook import DiscordWebhook, DiscordEmbed
 import matplotlib.pyplot as plt
 import json, logging, csv, random
+import sys
 
-logging.basicConfig(filename='files/log.log', filemode='a', level=logging.INFO)
+logger = logging.getLogger('')
+logger.setLevel(logging.INFO)
+fh = logging.FileHandler('files/log.log', mode='a')
+sh = logging.StreamHandler(sys.stdout)
+formatter = logging.Formatter('[%(asctime)s] %(levelname)s [%(filename)s.%(funcName)s:%(lineno)d] %(message)s', datefmt='%a, %d %b %Y %H:%M:%S')
+fh.setFormatter(formatter)
+sh.setFormatter(formatter)
+logger.addHandler(fh)
+logger.addHandler(sh)
+
 
 class DeGIRO_PAC():
     
@@ -107,11 +117,14 @@ class DeGIRO_PAC():
         embed = DiscordEmbed(title = title, description = descriprion, color = color)
         #embed.set_author(name='Criss', url='https://github.com/CristaudoGiuseppe')
         embed.set_footer(text='DEGIRO PAC V. 0.1')
-        self.webhook.add_embed(embed)
-        try:
-            self.webhook.execute()
-        except:
-            logging.warning('[' + str(date.today()) + '][ERROR SENDING WEBHOOK]')
+        if hasattr(self, 'webhook'):
+            self.webhook.add_embed(embed)
+            try:
+                self.webhook.execute()
+            except:
+                logging.warning('[' + str(date.today()) + '][ERROR SENDING WEBHOOK]')
+        else:
+                logging.warning('[' + str(date.today()) + '][ERROR SENDING WEBHOOK]')
             
     def run(self):
         self.login()
